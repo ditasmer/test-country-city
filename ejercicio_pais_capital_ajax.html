@@ -12,15 +12,18 @@
 			consultaCapitales()
 			
 			//activar evento onchange en la combo
+			document.getElementById('capital').onclick = consultarPais;
+
 		}
 
 		function consultarPais() {
+			alert("consulraPAis!!!")
 			//recoger la capital seleccionada en la combo
+			let capital = document.querySelector('#capital').value
 
 			//llamada ajax al servicio de consulta del país al cual pertenece la capital
 				//el servicio busca la capital seleccionada en el array y devuelve la clave (el país)
 
-			//con la respuesta (será text) informar el input situado en la combo
 
 		}
 
