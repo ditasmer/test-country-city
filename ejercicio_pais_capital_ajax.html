@@ -26,7 +26,39 @@
 
 		function consultaCapitales() {
 			//llamada ajax al servicio de consulta de capitales
-				// el servicio va a enviar un json solo con las capitales
+			//definir los parametros de la peticion
+			let parametros = {
+				method:'post'
+			}
+			//servicio
+			let servicio = "server_city.php";
+			// el servicio va a enviar un json solo con las capitales
+			fetch (servicio, parametros)
+				.then(function(acuse) {
+					console.log(acuse)
+					if (acuse.ok) {
+						//que tipo de respuesta esperamos: text, json. xml, blob En este caso un JSON
+						return acuse.json()
+
+					} else {
+						console.log(acuse)
+						throw("Algo ha ido mal en la petición")
+
+					}			
+				})
+
+				.then(function(respuesta){
+					//respuesta del servidor
+					//respuestaServidor(respuesta)
+					console.log(respuesta);
+
+				})
+					
+				 .catch(function(error){
+					alert(error);
+				})	
+
+				
 
 			//con la respuesta (que será un json) montar opciones de combo
 
