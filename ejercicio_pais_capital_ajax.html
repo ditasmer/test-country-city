@@ -17,13 +17,47 @@
 		}
 
 		function consultarPais() {
-			alert("consulraPAis!!!")
+			//alert("consulraPAis!!!")
 			//recoger la capital seleccionada en la combo
 			let capital = document.querySelector('#capital').value
 
 			//llamada ajax al servicio de consulta del país al cual pertenece la capital
 				//el servicio busca la capital seleccionada en el array y devuelve la clave (el país)
 
+			//encapsular datos
+			let datos = new FormData()
+			datos.append('capital', capital)
+			//parametros peticion
+			let parametros = {
+				method: 'post',
+				body: datos
+			}
+			//servicio
+			let servicio = "server_country.php";
+			//con la respuesta (será text) informar el input situado en la combo
+			fetch (servicio, parametros)
+				.then(function(acuse) {
+					if (acuse.ok) {
+						//que tipo de respuesta esperamos: text, json. xml, blob En este caso un JSON
+						return acuse.text()
+
+					} else {
+						console.log(acuse)
+						throw("Algo ha ido mal en la petición")
+
+					}			
+				})
+
+				.then(function(respuesta){
+					//respuesta del servidor
+					//alert(respuesta)
+					document.querySelector('#pais').value = respuesta
+
+				})
+					
+				 .catch(function(error){
+					alert(error);
+				})
 
 		}
 
