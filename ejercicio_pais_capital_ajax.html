@@ -35,7 +35,6 @@
 			// el servicio va a enviar un json solo con las capitales
 			fetch (servicio, parametros)
 				.then(function(acuse) {
-					console.log(acuse)
 					if (acuse.ok) {
 						//que tipo de respuesta esperamos: text, json. xml, blob En este caso un JSON
 						return acuse.json()
@@ -50,7 +49,6 @@
 				.then(function(respuesta){
 					//respuesta del servidor
 					//respuestaServidor(respuesta)
-					console.log(respuesta);
 
 				})
 					
