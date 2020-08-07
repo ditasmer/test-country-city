@@ -48,7 +48,13 @@
 
 				.then(function(respuesta){
 					//respuesta del servidor
-					//respuestaServidor(respuesta)
+					//crear combo con la respuesta json
+					var combo = '';
+					for (i in respuesta){
+						combo += "<option>"+respuesta[i]+"</option>"
+					}
+					//insert combo en la etiqueta select del HTML
+					document.querySelector('#capital').innerHTML += combo
 
 				})
 					
